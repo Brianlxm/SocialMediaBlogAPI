@@ -29,6 +29,7 @@ public class SocialMediaController {
         app.get("example-endpoint", this::exampleHandler);
 
         app.post("/register", this::registerUserHandler);
+        app.post("/login", this::loginUserHandler);
 
         return app;
     }
@@ -49,6 +50,19 @@ public class SocialMediaController {
             ctx.status(400);
         }else{
             ctx.json(mapper.writeValueAsString(addedAccount));
+            ctx.status(200);
+        }
+    }
+
+    private void loginUserHandler(Context ctx) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Account account = mapper.readValue(ctx.body(), Account.class);
+        Account loginAccount = accountService.getAccount(account);
+        if(loginAccount==null){
+            ctx.status(401);
+        }else{
+            ctx.json(mapper.writeValueAsString(loginAccount));
+            ctx.status(200);
         }
     }
 
