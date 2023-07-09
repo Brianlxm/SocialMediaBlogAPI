@@ -25,6 +25,15 @@ public class AccountService {
         }
     }
 
+    // verify user
+    public Account getAccount(Account account){
+        if (accountDAO.getAccount(account.getUsername())!=null && accountDAO.getAccount(account.getUsername()).getPassword()==account.getPassword()){
+            return accountDAO.getAccount(account.getUsername());
+        }else{
+            return null;
+        }
+    }
+
     // get user by account_id
 
 
