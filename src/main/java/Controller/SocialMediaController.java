@@ -31,7 +31,7 @@ public class SocialMediaController {
         app.post("/register", this::registerUserHandler);
         app.post("/login", this::loginUserHandler);
         app.post("/messages", this::addMessageHandler);
-        app.put("messages/{message_id}", this::updateMessageHandler);
+        app.patch("messages/{message_id}", this::updateMessageHandler);
         app.get("/messages", this::getAllMessagesHandler);
         app.get("/messages/{message_id}", this::getMessageByIdHandler);
         app.delete("/messages/{message_id}", this::deleteMessageByIdHandler);
@@ -62,11 +62,11 @@ public class SocialMediaController {
         ObjectMapper mapper = new ObjectMapper();
         Account account = mapper.readValue(ctx.body(), Account.class);
         Account loginAccount = accountService.getAccount(account);
-        if(loginAccount==null){
-            ctx.status(401);
-        }else{
-            ctx.status(200);
+        if(loginAccount!=null){
             ctx.json(mapper.writeValueAsString(loginAccount));
+            ctx.status(200);
+        }else{
+            ctx.status(401);
         }
     }
 
@@ -86,9 +86,9 @@ public class SocialMediaController {
         Message message = mapper.readValue(ctx.body(), Message.class);
         int message_id = Integer.parseInt(ctx.pathParam("message_id"));
         Message updatedMessage = messageService.updateMessage(message_id, message);
-        System.out.println(updatedMessage);
         if(updatedMessage != null){
             ctx.json(mapper.writeValueAsString(updatedMessage));
+            ctx.status(200);
 
         }else{
             ctx.status(400);

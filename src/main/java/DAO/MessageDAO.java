@@ -102,7 +102,7 @@ public class MessageDAO {
 
 
     // update a message by message_id
-    public void updateMessage(int message_id, Message message){
+    public void updateMessage(int id, Message message){
         Connection connection = ConnectionUtil.getConnection();
         try {
             String sql = "update message set posted_by=?, message_text=?, time_posted_epoch=? where message_id=?";
@@ -111,7 +111,7 @@ public class MessageDAO {
             preparedStatement.setInt(1, message.getPosted_by());
             preparedStatement.setString(2, message.getMessage_text());
             preparedStatement.setLong(3, message.getTime_posted_epoch());
-            preparedStatement.setInt(4, message_id);
+            preparedStatement.setInt(4, id);
 
             preparedStatement.executeUpdate();
         }catch(Exception e){
