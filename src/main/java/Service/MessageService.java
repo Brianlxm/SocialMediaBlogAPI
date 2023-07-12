@@ -1,12 +1,15 @@
 package Service;
 
 import DAO.MessageDAO;
+import DAO.AccountDAO;
 import Model.Message;
 
 import java.util.List;
 
 public class MessageService {
     public MessageDAO messageDAO;
+
+    public AccountDAO accountDAO = new AccountDAO();
 
     public MessageService(){
         messageDAO = new MessageDAO();
@@ -16,9 +19,13 @@ public class MessageService {
         this.messageDAO = messageDAO;
     }
 
-    // add new message
+    // add new message ****
     public Message addMessage(Message message){
-        return messageDAO.addMessage(message);
+        if (accountDAO.checkAccount(message.getPosted_by())!=null && message.getMessage_text().length()<255 && message.getMessage_text()!=null){
+            return messageDAO.addMessage(message);
+        }else{
+            return null;
+        }
     }
 
     // get all messages
