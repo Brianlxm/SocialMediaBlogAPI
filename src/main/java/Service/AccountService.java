@@ -18,7 +18,7 @@ public class AccountService {
     
     // add new user
     public Account addAccount(Account account){
-        if (accountDAO.getAccount(account.getUsername())==null && account.getPassword().length()>=4 && account.getUsername()!=null){
+        if (accountDAO.getAccount(account.getUsername())==null && account.getPassword().length()>=4 && account.getUsername()!=""){
             return accountDAO.addAccount(account);
         }else{
             return null;

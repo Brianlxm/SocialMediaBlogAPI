@@ -21,7 +21,7 @@ public class MessageService {
 
     // add new message ****
     public Message addMessage(Message message){
-        if (accountDAO.checkAccount(message.getPosted_by())!=null && message.getMessage_text().length()<255 && message.getMessage_text()!=null){
+        if (accountDAO.checkAccount(message.getPosted_by())!=null && message.getMessage_text().length()<=255 && message.getMessage_text()!=null){
             return messageDAO.addMessage(message);
         }else{
             return null;
@@ -45,7 +45,7 @@ public class MessageService {
 
     // update message by message_id
     public Message updateMessage(int id, Message message){
-        if (messageDAO.getMessageById(id)!=null){
+        if (messageDAO.getMessageById(id)!=null && message.getMessage_text().length()<=255 && message.getMessage_text()!=""){
             messageDAO.updateMessage(id, message);
             return messageDAO.getMessageById(id);
         }else{
