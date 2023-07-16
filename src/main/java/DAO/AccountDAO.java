@@ -76,8 +76,4 @@ public class AccountDAO {
         return null;            
     }
 
-    
-    // retreive all messages by account_id
-
-
 }
