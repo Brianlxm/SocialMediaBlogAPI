@@ -34,6 +34,15 @@ public class AccountService {
         }
     }
 
+    //
+    public Account getAccount1(String username, String password){
+        if (accountDAO.getAccount(username)!=null && accountDAO.getAccount(username).getPassword()==password){
+            return accountDAO.getAccount(username);
+        }else{
+            return null;
+        }
+    }
+
     // get user by account_id
 
 
