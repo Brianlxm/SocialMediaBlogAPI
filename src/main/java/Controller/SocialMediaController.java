@@ -59,24 +59,13 @@ public class SocialMediaController {
             ctx.status(400);
         }
     }
-/* 
-    private void loginUserHandler(Context ctx) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        Account account = mapper.readValue(ctx.body(), Account.class);
-        Account loginAccount = accountService.getAccount(account);
-        if(loginAccount!=null){
-            ctx.json(mapper.writeValueAsString(loginAccount));
-        }else{
-            ctx.status(401);
-        }
-    }
-*/
+
     private void loginUserHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readTree(ctx.body());
         String username = jsonNode.get("username").asText();
         String password = jsonNode.get("password").asText();
-        Account loginAccount = accountService.getAccount1(username,password);
+        Account loginAccount = accountService.getAccount(username,password);
         if(loginAccount != null){
             ctx.json(mapper.writeValueAsString(loginAccount));
         }else{
@@ -84,18 +73,7 @@ public class SocialMediaController {
         }
     }
 
-    /* 
-    private void addMessageHandler(Context ctx) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        Message message = mapper.readValue(ctx.body(), Message.class);
-        Message addedMessage = messageService.addMessage(message);
-        if(addedMessage != null){
-            ctx.json(mapper.writeValueAsString(addedMessage));
-        }else{
-            ctx.status(400);
-        }
-    }
-    */
+
     private void addMessageHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readTree(ctx.body());
@@ -110,21 +88,6 @@ public class SocialMediaController {
         }
     }
 
-
-    /*
-    private void updateMessageHandler(Context ctx) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        Message message = mapper.readValue(ctx.body(), Message.class);
-        int message_id = Integer.parseInt(ctx.pathParam("message_id"));
-        Message updatedMessage = messageService.updateMessage(message_id, message);
-        if(updatedMessage != null){
-            ctx.json(mapper.writeValueAsString(updatedMessage));
-
-        }else{
-            ctx.status(400);
-        }
-    }
-    */
 
     private void updateMessageHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();

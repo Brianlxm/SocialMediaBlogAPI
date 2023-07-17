@@ -19,7 +19,7 @@ public class MessageService {
         this.messageDAO = messageDAO;
     }
 
-    // add new message ****
+    // add new message 
     public Message addMessage(int posted_by, String message_text, long time_posted_epoch){
         if (accountDAO.checkAccount(posted_by)!=null && message_text.length()<255 && message_text!=""){
             return messageDAO.addMessage(posted_by,message_text,time_posted_epoch);

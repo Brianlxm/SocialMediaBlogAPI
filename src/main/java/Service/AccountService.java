@@ -3,7 +3,6 @@ package Service;
 import DAO.AccountDAO;
 import Model.Account;
 
-import java.util.List;
 
 public class AccountService {
     public AccountDAO accountDAO;
@@ -26,29 +25,13 @@ public class AccountService {
     }
 
     // verify user
-    /*
-    public Account getAccount(Account account){
-        if (accountDAO.getAccount(account.getUsername())!=null && accountDAO.getAccount(account.getUsername()).getPassword()==account.getPassword()){
-            return accountDAO.getAccount(account.getUsername());
-        }else{
-            return null;
-        }
-    }
-    */
-
-    //
-    public Account getAccount1(String username, String password){
+    public Account getAccount(String username, String password){
         if (accountDAO.getAccount(username)!=null && password.equals(accountDAO.getAccount(username).getPassword())){
             return accountDAO.getAccount(username);
         }else{
             return null;
         }
     }
-
-    // get user by account_id
-
-
-    // retreive all messages by account_id
 
     
 }
