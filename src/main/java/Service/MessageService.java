@@ -20,9 +20,9 @@ public class MessageService {
     }
 
     // add new message ****
-    public Message addMessage(Message message){
-        if (accountDAO.checkAccount(message.getPosted_by())!=null && message.getMessage_text().length()<255 && message.getMessage_text()!=null){
-            return messageDAO.addMessage(message);
+    public Message addMessage(int posted_by, String message_text, long time_posted_epoch){
+        if (accountDAO.checkAccount(posted_by)!=null && message_text.length()<255 && message_text!=""){
+            return messageDAO.addMessage(posted_by,message_text,time_posted_epoch);
         }else{
             return null;
         }

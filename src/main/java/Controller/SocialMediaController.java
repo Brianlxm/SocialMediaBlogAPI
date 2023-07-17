@@ -84,7 +84,7 @@ public class SocialMediaController {
         }
     }
 
-    
+    /* 
     private void addMessageHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         Message message = mapper.readValue(ctx.body(), Message.class);
@@ -95,6 +95,21 @@ public class SocialMediaController {
             ctx.status(400);
         }
     }
+    */
+    private void addMessageHandler(Context ctx) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = mapper.readTree(ctx.body());
+        int posted_by = jsonNode.get("posted_by").asInt();
+        String message_text = jsonNode.get("message_text").asText();
+        Long time_posted_epoch = jsonNode.get("time_posted_epoch").asLong();
+        Message addedMessage = messageService.addMessage(posted_by,message_text,time_posted_epoch);
+        if(addedMessage != null){
+            ctx.json(mapper.writeValueAsString(addedMessage));
+        }else{
+            ctx.status(400);
+        }
+    }
+
 
     /*
     private void updateMessageHandler(Context ctx) throws JsonProcessingException {
