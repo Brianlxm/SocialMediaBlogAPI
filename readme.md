@@ -82,13 +82,17 @@ Users can retrieve all messages written by a particular user by making a GET req
 
  
 
-## Java: Backend programming language 
+## Java: 
+Backend programming language 
 
-## Javalin: Lightweight Java web framework for building RESTful APIs 
+## Javalin: 
+Lightweight Java web framework for building RESTful APIs 
 
-## JDBC (Java Database Connectivity): API for Java to connect and interact with databases 
+## JDBC (Java Database Connectivity): 
+API for Java to connect and interact with databases 
 
-## Maven: Build automation and project management tool for Java projects 
+## Maven: 
+Build automation and project management tool for Java projects 
 
  
 
