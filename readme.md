@@ -96,53 +96,41 @@ Maven: Build automation and project management tool for Java projects
 
  
 
-Clone the Repository: 
-
-bashCopy code 
+## Clone the Repository: 
 
 git clone https://github.com/Brianlxm/SocialMediaBlogAPI.git 
 cd social-media-blog-api 
  
 
-Build the Project using Maven: 
-
-bashCopy code 
+## Build the Project using Maven: 
 
 mvn clean install 
  
 
-Configure Database: Set up your database and update the database connection details in the .env file. 
+## Configure Database: Set up your database and update the database connection details in the .env file. 
 
 Configure Environment Variables: Create a .env file in the root directory and add necessary configuration values such as database connection details, JWT secret key, etc. 
 
-Run the Application: 
-
-bashCopy code 
+## Run the Application: 
 
 java -jar target/social-media-blog-api.jar 
  
 
 The API will be available at http://localhost:8080. 
 
-Access the API: You can use tools like curl or Postman to interact with the API endpoints. 
+## Access the API: You can use tools like curl or Postman to interact with the API endpoints. 
 
-Example: Register a new user 
-
-bashCopy code 
+### Example: Register a new user 
 
 curl -X POST -H "Content-Type: application/json" -d '{"username": "john_doe", "password": "securepassword"}' http://localhost:8080/register 
  
 
-Example: Log in 
-
-bashCopy code 
+### Example: Log in 
 
 curl -X POST -H "Content-Type: application/json" -d '{"username": "john_doe", "password": "securepassword"}' http://localhost:8080/login 
  
 
-Example: Create a new message 
-
-bashCopy code 
+### Example: Create a new message 
 
 curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer YOUR_JWT_TOKEN" -d '{"text": "Hello, World!"}' http://localhost:8080/messages 
  
