@@ -149,7 +149,7 @@ Remember to replace YOUR_JWT_TOKEN with the actual JWT token obtained during the
 
  
 
-Brian Lam (brianjohnlam@gmail.com) 
+Brian Lam
 
  
 
